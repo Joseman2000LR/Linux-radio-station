@@ -18,8 +18,9 @@ El script instala, compila y configura las siguientes aplicaciones esenciales:
 
 Sigue estos sencillos pasos para poner todo en marcha en tu terminal:
 
-### 1. Deescargar el script estacion_radio.sh
+### 1. Descargar el script estacion_radio.sh
 
+ estacion_radio.sh
 ### 2. Dar permisos de ejecución
 
 Otorga permisos para que el sistema pueda ejecutar el script:
