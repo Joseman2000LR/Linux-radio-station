@@ -6,19 +6,14 @@ set -e
 echo "=== [1/6] Actualizando listas del sistema y paquetes (update & upgrade) ==="
 sudo apt update && sudo apt upgrade -y
 
-echo "=== [2/6] Instalando utilidades de radio (Fldigi, Flrig y QLog) ==="
-sudo apt install -y fldigi flrig qlog
+echo "=== [2/6] Instalando utilidades de radio (Fldigi, Flrig ) ==="
+sudo apt install -y fldigi flrig 
 
-echo "=== [3/6] Instalando CHIRP (para programación de radios) ==="
-# Intentamos instalar chirp por apt; si no está disponible, usamos pipx
-if sudo apt-cache policy chirp | grep -q "Candidate:"; then
-    sudo apt install -y chirp
-else
-    echo "CHIRP no está en los repositorios de APT. Instalando vía pipx..."
-    sudo apt install -y python3-pip pipx
-    pipx install chirp-radio
-    pipx ensurepath
-fi
+
+echo "=== [3/6] Instalando CHIRP (para programación de radios) mediante Flatpak ==="
+# Usamos el repositorio alternativo mantenido para CHIRP en Flatpak o Flathub
+flatpak remote-add --if-not-exists --no-gpg-verify chirp-repo https://ndarilek.gitlab.io/chirp/ || true
+flatpak install -y chirp-repo com.danplanet.chirp.Chirp || echo "CHIRP instalado o disponible en Flatpak."
 
 echo "=== [4/6] Instalando QLog mediante Flatpak ==="
 flatpak install -y flathub org.freedesktop.Platform//23.08

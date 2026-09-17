@@ -33,7 +33,7 @@ Inicia el proceso de instalación automatizada (te pedirá tu contraseña de adm
 
 ./estacion_radio.sh
 
-### 3 Pasos Finales (SDR++)
+###  Pasos Finales (SDR++)
 
 Una vez que el script termine de compilar SDR++, el ejecutable se encontrará en su carpeta de compilación. Para instalarlo de forma permanente en el sistema (permitiendo que se pueda iniciar desde el menú de aplicaciones o escribiendo sdrpp en la terminal), ejecuta:
 
