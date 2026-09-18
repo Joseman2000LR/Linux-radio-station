@@ -16,17 +16,41 @@ fi
 
 # Asegurar que el repositorio Flathub esté agregado
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+if ! flatpak info com.w1hkj.flrig &> /dev/null; then
+    echo "Instalando Flrig..."
+    flatpak install -y flathub com.w1hkj.flrig
+else
+    echo "Flrig ya se encuentra instalado."
+fi
 
-echo "=== [3/5] Instalando utilidades de radio (Flrig y Fldigi) ==="
-flatpak install -y flathub com.w1hkj.flrig
-flatpak install -y flathub com.w1hkj.fldigi 
+if ! flatpak info com.w1hkj.fldigi &> /dev/null; then
+    echo "Instalando Fldigi..."
+    flatpak install -y flathub com.w1hkj.fldigi
+else
+    echo "Fldigi ya se encuentra instalado."
+fi
 
-echo "=== [4/5] Instalando CHIRP ==="
-flatpak install -y flathub com.chirpmyradio.chirp
+echo "=== [4/5] Verificando e instalando CHIRP ==="
+if ! flatpak info com.chirpmyradio.chirp &> /dev/null; then
+    echo "Instalando CHIRP..."
+    flatpak install -y flathub com.chirpmyradio.chirp
+else
+    echo "CHIRP ya se encuentra instalado."
+fi
 
-echo "=== [5/5] Instalando QLog y Gqrx  ==="
-flatpak install -y flathub io.github.foldynl.QLog
-flatpak install -y flathub dk.gqrx.gqrx
+if ! flatpak info io.github.foldynl.QLog &> /dev/null; then
+    echo "Instalando QLog..."
+    flatpak install -y flathub io.github.foldynl.QLog
+else
+    echo "QLog ya se encuentra instalado."
+fi
+
+if ! flatpak info dk.gqrx.gqrx &> /dev/null; then
+    echo "Instalando Gqrx..."
+    flatpak install -y flathub dk.gqrx.gqrx
+else
+    echo "Gqrx ya se encuentra instalado."
+fi
 
 echo ""
 echo "=========================================================="
